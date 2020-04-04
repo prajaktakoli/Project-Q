@@ -1,1 +1,115 @@
-<p>register-customer works!</p>
+<h1>Customer Registration: </h1>
+<form action="">
+    <!-- Username -->
+    <div class="row">
+        <div class="form-group mb-0 col-xs-3 ml-4">
+            <label for="username">Enter Username: </label>
+            <input [(ngModel)]="registerCustomerData['userName']" type="text" name="username" id="username"
+                class="form-control" [ngModelOptions]="{standalone: true}" aria-describedby="username-help">
+            <small id="username-help" class="form-text text-muted">You'll need to remember this.</small>
+            <label id="username_validation"></label>
+        </div>
+    </div>
+    <!-- Password and Confirm password -->
+    <div class="row">
+        <div class="form-group col-xs-3 mb-4 ml-4">
+            <label for="password">Enter Password: </label>
+            <input [(ngModel)]="registerCustomerData['password']" type="password" name="password" id="password"
+                [ngModelOptions]="{standalone: true}" class="form-control" aria-describedby="passwordHelpBloc">
+            <small id="passwordHelpBlock" class="form-text text-muted">
+                Your password must be 8-20 characters long, contain letters and numbers, and must not contain
+                spaces, special characters, or emoji.
+            </small>
+            <div class="mt-3">
+                <label for="confirm_password">Re-enter password: </label>
+                <input [(ngModel)]="registerCustomerData['confirmpassword']" type="password" name="confirm_password"
+                    id="confirm_password" class="form-control" [ngModelOptions]="{standalone: true}"
+                    aria-describedby="password_validator">
+                <small id="password_validator"></small>
+            </div>
+        </div>
+    </div>
+    <!-- email -->
+    <div class="row">
+        <div class="form-group col-xs-3 ml-4">
+            <label for="email">Enter your email: </label>
+            <input [(ngModel)]="registerCustomerData['email']" [ngModelOptions]="{standalone: true}" class="form-control" type="email" name="email" id="email"
+                placeholder="someone@example.com">
+        </div>
+    </div>
+    <br>
+    <!-- Firstname and Lastname -->
+    <div class="input-group">
+        <div class="input-group-prepend ml-2">
+            <span class="input-group-text">First and last name</span>
+            <div class="col">
+                <input [(ngModel)]="registerCustomerData['name']" [ngModelOptions]="{standalone: true}" id="firstname" type="text" aria-label="First name"
+                    class="form-control" placeholder="Firstname">
+            </div>
+        </div>
+    </div>
+    <br>
+    <!-- Phone -->
+    <div class="row">
+        <div class="form-group col-xs-3 ml-4">
+            <label for="phone">Enter your phone:</label>
+            <input [(ngModel)]="registerCustomerData['phone']" [ngModelOptions]="{standalone: true}" class="form-control" type="text" name="phone"
+                id="phone" aria-describedby="phone-msg">
+            <small id="phone-msg"><i>Ring-Ring</i></small>
+            <small id="phone_validation"></small>
+        </div>
+    </div>
+    <!-- Select Boxes -->
+    <div class="row">
+        <div class="form-group col-xs-3 ml-4 mb-0">
+            <label for="location">Select your location: </label>
+        </div>
+    </div>
+    <!-- City -->
+    <div class="row">
+        <div class="form-group ml-4 mt-3 col-xs-3">
+            <div class="input-group mb-0">
+                <div class="input-group-prepend">
+                    <label class="input-group-text" for="city">City:</label>
+                </div>
+                <select [(ngModel)]="registerCustomerData['city']" [ngModelOptions]="{standalone: true}" name="demo" id="#"class="form-control" name="city" id="City" required>
+                    <option selected="selected" value="one">Select</option>
+                    <option value="two">Pune</option>
+                    <option value="three">Mumbai</option>
+                    </select>
+                <!-- <select [(ngModel)]="cityList" ng-options="let x of cityList" class="form-control"  name="city" id="City" required>
+                    <option value="default">x</option>
+                </select> -->
+                <!-- <select class="form-control" name="city" id="City" required>
+                    <option value="default">Choose...</option>
+                </select> -->
+            </div>
+        </div>
+        <!-- </div> -->
+        <!-- <div class="row"> -->
+        <div class="form-group ml-4 mt-3 col-xs-3">
+            <div class="input-group mb-0">
+                <div class="input-group-prepend">
+                    <label class="input-group-text" for="locality">Locality: </label>
+                </div>
+                <div>
+                    <select [(ngModel)]="registerCustomerData['locality']" [ngModelOptions]="{standalone: true}"class="form-control" name="locality" id="locality" required>
+                        <option selected="selected" value="one">Select</option>
+                        <option value="two">Vadgaon Sheri</option>
+                        <option value="three">Anand park</option>
+                        <option value="four">Sainath Nagar</option>
+                        <option value="five">Kharadi</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Checkbox -->
+    <div class="custom-control custom-checkbox ml-2 mb-2">
+        <input type="checkbox" class="custom-control-input" id="customCheck1">
+        <label class="custom-control-label" for="customCheck1">Accept our <a href="#">Terms and
+                Conditions</a></label>
+    </div>
+    <!-- Submit Button -->
+    <button id="agree_customer_button" class="btn btn-primary ml-2 mt-3" type="submit" (click)='registerCustomer()'>Register</button>
+</form>

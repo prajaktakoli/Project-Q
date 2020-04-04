@@ -35,13 +35,23 @@ const userSchema = new Schema({
         trim: true,
         select: true
     },
+    confirmpassword: {
+        type: String,
+        trim: true,
+        select: true
+    },
     phone: {
         type: String,
         trim: true,
         default: null,
         required: false
     },  
-    location: {
+    city: {
+        type: String,
+        trim: true,
+        select: true
+    }, 
+    locality: {
         type: String,
         trim: true,
         select: true

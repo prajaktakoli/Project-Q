@@ -1,1 +1,28 @@
-<p>login-customer works!</p>
+<h1>Customer Login: </h1>
+<form action="">
+    <!-- Username -->
+    <div class="row">
+        <div class="form-group mb-0 col-xs-3 ml-4">
+            <label for="username">Enter Username: </label>
+            <input [(ngModel)]="loginCustomerData['userName']" type="text" name="username" id="username"
+                class="form-control" [ngModelOptions]="{standalone: true}" aria-describedby="username-help">
+            <label id="username_validation"></label>
+        </div>
+    </div>
+    <!-- Password and Confirm password -->
+    <div class="row">
+        <div class="form-group col-xs-3 mb-4 ml-4">
+            <label for="password">Enter Password: </label>
+            <input [(ngModel)]="loginCustomerData['password']" type="password" name="password" id="password"
+                [ngModelOptions]="{standalone: true}" class="form-control" aria-describedby="passwordHelpBloc">
+        </div>
+    </div>
+    <br>
+    <a class="nav-link" routerLink="/forgotpassword" routerLinkActive="active">Forgot Password?</a>
+    <!-- Submit Button -->
+    <button id="login_customer_button" class="btn btn-primary ml-2 mt-3" type="submit"
+        (click)='loginCustomer()'>Login</button>
+</form>
+<div class="container">
+    <router-outlet></router-outlet>
+</div>

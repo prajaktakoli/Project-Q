@@ -9,14 +9,22 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponent implements OnInit {
 
-  registerUserData = {}
-  constructor(private _auth:AuthService,
-    private _router:Router) { }
+  cityList =['Pune','Mumbai','Pune City']
+  registerMerchantData = {}
+  constructor(private _auth: AuthService,
+              private _router:Router) { }
 
   ngOnInit(): void {
   }
-  registerUser(){
-    this._auth.registerMerchant(this.registerUserData)
-    ._subscribe()
+  registerMerchant() {
+    this._auth.registerMerchant(this.registerMerchantData)
+      .subscribe(
+        res => {
+          console.log(res),         
+          localStorage.setItem('token', res.token),
+          this._router.navigate(['/merchant'])
+        },
+        err => {console.log(err)}
+      )
   }
 }

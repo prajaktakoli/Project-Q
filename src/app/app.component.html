@@ -6,13 +6,15 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav">
-      <a class="nav-link" routerLink="/login" routerLinkActive="active">Login As Merchant</a>
-      <a class="nav-link" routerLink="/register" routerLinkActive="active">Register As Merchant</a> 
+      <a class="nav-link"  routerLink="/login" routerLinkActive="active">Login As Merchant</a>
+      <a class="nav-link" routerLink="/register" routerLinkActive="active">Register As Merchant</a>
       <a class="nav-link" routerLink="/customerlogin" routerLinkActive="active">Login As Customer</a>
-      <a class="nav-link" routerLink="/registercustomer" routerLinkActive="active">Register As Customer</a>   
+      <a class="nav-link" routerLink="/customerregister" routerLinkActive="active">Register As Customer</a>
+      <a href="" class="nav-link" style="cursor: pointer;" *ngIf="_auth.loggedIn()" (click)="_auth.logoutUser()">Logout</a>    
     </ul>
   </div>
 </nav>
 <div class="container">
   <router-outlet></router-outlet>
 </div>
+<!-- *ngIf="!_auth.loggedInCustomer()"  -->

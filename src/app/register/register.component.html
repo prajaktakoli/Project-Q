@@ -1,193 +1,131 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <title>Merchant Signup</title>
-</head>
-
-<body>
-    <h1>Merchant Registration: </h1>
-    <form action="">
-        <!-- Username -->
-        <div class="row">
-            <div class="form-group mb-0 col-xs-3 ml-4">
-                <label for="username">Enter Username: </label>
-                <input class="form-control" type="text" name="username" id="username" aria-describedby="username-help">
-                <small id="username-help" class="form-text text-muted">You'll need to remember this.</small>
-                <label id="username_validation"></label>
+<h1>Merchant Registration: </h1>
+<form action="">
+    <!-- Username -->
+    <div class="row">
+        <div class="form-group mb-0 col-xs-3 ml-4">
+            <label for="username">Enter Username: </label>
+            <input [(ngModel)]="registerMerchantData['userName']" type="text" name="username" id="username"
+                class="form-control" [ngModelOptions]="{standalone: true}" aria-describedby="username-help">
+            <small id="username-help" class="form-text text-muted">You'll need to remember this.</small>
+            <label id="username_validation"></label>
+        </div>
+    </div>
+    <!-- Password and Confirm password -->
+    <div class="row">
+        <div class="form-group col-xs-3 mb-4 ml-4">
+            <label for="password">Enter Password: </label>
+            <input [(ngModel)]="registerMerchantData['password']" type="password" name="password" id="password"
+                [ngModelOptions]="{standalone: true}" class="form-control" aria-describedby="passwordHelpBloc">
+            <small id="passwordHelpBlock" class="form-text text-muted">
+                Your password must be 8-20 characters long, contain letters and numbers, and must not contain
+                spaces, special characters, or emoji.
+            </small>
+            <div class="mt-3">
+                <label for="confirm_password">Re-enter password: </label>
+                <input [(ngModel)]="registerMerchantData['confirmpassword']" type="password" name="confirm_password"
+                    id="confirm_password" class="form-control" [ngModelOptions]="{standalone: true}"
+                    aria-describedby="password_validator">
+                <small id="password_validator"></small>
             </div>
         </div>
-        <!-- Password and Confirm password -->
-        <div class="row">
-            <div class="form-group col-xs-3 mb-4 ml-4">
-                <label for="password">Enter Password: </label>
-                <input class="form-control" type="password" name="password" id="password"
-                    aria-describedby="passwordHelpBloc">
-                <small id="passwordHelpBlock" class="form-text text-muted">
-                    Your password must be 8-20 characters long, contain letters and numbers, and must not contain
-                    spaces, special characters, or emoji.
-                </small>
-                <div class="mt-3">
-                    <label for="confirm_password">Re-enter password: </label>
-                    <input class="form-control" type="password" name="confirm_password" id="confirm_password"
-                        aria-describedby="password_validator">
-                    <small id="password_validator"></small>
+    </div>
+    <!-- email -->
+    <div class="row">
+        <div class="form-group col-xs-3 ml-4">
+            <label for="email">Enter your email: </label>
+            <input [(ngModel)]="registerMerchantData['email']" [ngModelOptions]="{standalone: true}" class="form-control" type="email" name="email" id="email"
+                placeholder="someone@example.com">
+        </div>
+    </div>
+    <!-- Service name -->
+    <div class="row">
+        <div class="form-group col-xs-3 ml-4">
+            <label for="service_name">Enter the name of your service/shop</label>
+            <input [(ngModel)]="registerMerchantData['serviceType']" [ngModelOptions]="{standalone: true}" class="form-control" type="text"
+                name="service_name" id="service_name" required>
+        </div>
+    </div>
+    <!-- GSTIN -->
+    <div class="row">
+        <div class="form-group col-xs-3 ml-4">
+            <label for="GSTIN">Enter your GSTIN (if applicable): </label>
+            <input [(ngModel)]="registerMerchantData['gstinNo']" [ngModelOptions]="{standalone: true}" class="form-control" type="text" name="GSTIN"
+                id="GSTIN" placeholder="Your 15-digit GSTIN">
+        </div>
+    </div>
+    <br>
+    <!-- Firstname and Lastname -->
+    <div class="input-group">
+        <div class="input-group-prepend ml-2">
+            <span class="input-group-text">First and last name</span>
+            <div class="col">
+                <input [(ngModel)]="registerMerchantData['merchantName']" [ngModelOptions]="{standalone: true}" id="firstname" type="text" aria-label="First name"
+                    class="form-control" placeholder="Firstname">
+            </div>
+        </div>
+    </div>
+    <br>
+    <!-- Phone -->
+    <div class="row">
+        <div class="form-group col-xs-3 ml-4">
+            <label for="phone">Enter your phone:</label>
+            <input [(ngModel)]="registerMerchantData['phone']" [ngModelOptions]="{standalone: true}" class="form-control" type="text" name="phone"
+                id="phone" aria-describedby="phone-msg">
+            <small id="phone-msg"><i>Ring-Ring</i></small>
+            <small id="phone_validation"></small>
+        </div>
+    </div>
+    <!-- Select Boxes -->
+    <div class="row">
+        <div class="form-group col-xs-3 ml-4 mb-0">
+            <label for="location">Select your location: </label>
+        </div>
+    </div>
+    <!-- City -->
+    <div class="row">
+        <div class="form-group ml-4 mt-3 col-xs-3">
+            <div class="input-group mb-0">
+                <div class="input-group-prepend">
+                    <label class="input-group-text" for="city">City:</label>
                 </div>
+                <select [(ngModel)]="registerMerchantData['city']" [ngModelOptions]="{standalone: true}" name="demo" id="#"class="form-control" name="city" id="City" required>
+                    <option selected="selected" value="one">Select</option>
+                    <option value="two">Pune</option>
+                    <option value="three">Mumbai</option>
+                    </select>
+                <!-- <select [(ngModel)]="cityList" ng-options="let x of cityList" class="form-control"  name="city" id="City" required>
+                    <option value="default">x</option>
+                </select> -->
+                <!-- <select class="form-control" name="city" id="City" required>
+                    <option value="default">Choose...</option>
+                </select> -->
             </div>
         </div>
-        <!-- email -->
-        <div class="row">
-            <div class="form-group col-xs-3 ml-4">
-                <label for="email">Enter your email: </label>
-                <input class="form-control" type="email" name="email" id="email" placeholder="someone@example.com">
-            </div>
-        </div>
-        <!-- Service name -->
-        <div class="row">
-            <div class="form-group col-xs-3 ml-4">
-                <label for="service_name">Enter the name of your service/shop</label>
-                <input class="form-control" type="text" name="service_name" id="service_name" required>
-            </div>
-        </div>
-        <!-- GSTIN -->
-        <div class="row">
-            <div class="form-group col-xs-3 ml-4">
-                <label for="GSTIN">Enter your GSTIN (if applicable): </label>
-                <input class="form-control" type="text" name="GSTIN" id="GSTIN" placeholder="Your 15-digit GSTIN">
-            </div>
-        </div>
-        <br>
-        <!-- Firstname and Lastname -->
-        <div class="input-group">
-            <div class="input-group-prepend ml-2">
-                <span class="input-group-text">First and last name</span>
-                <div class="col">
-                    <input id="firstname" type="text" aria-label="First name" class="form-control"
-                        placeholder="Firstname">
+        <!-- </div> -->
+        <!-- <div class="row"> -->
+        <div class="form-group ml-4 mt-3 col-xs-3">
+            <div class="input-group mb-0">
+                <div class="input-group-prepend">
+                    <label class="input-group-text" for="locality">Locality: </label>
                 </div>
-                <div class="col">
-                    <input id="lastname" type="text" aria-label="Last name" class="form-control" placeholder="Lastname">
-                </div>
-            </div>
-        </div>
-        <br>
-        <!-- Phone -->
-        <div class="row">
-            <div class="form-group col-xs-3 ml-4">
-                <label for="phone">Enter your phone:</label>
-                <input class="form-control" type="text" name="phone" id="phone" aria-describedby="phone-msg">
-                <small id="phone-msg"><i>Ring-Ring</i></small>
-                <small id="phone_validation"></small>
-            </div>
-        </div>
-        <!-- Select Boxes -->
-        <div class="row">
-            <div class="form-group col-xs-3 ml-4 mb-0">
-                <label for="location">Select your location: </label>
-            </div>
-        </div>
-        <!-- City -->
-        <div class="row">
-            <div class="form-group ml-4 mt-3 col-xs-3">
-                <div class="input-group mb-0">
-                    <div class="input-group-prepend">
-                        <label class="input-group-text" for="city">City:</label>
-                    </div>
-                    <select class="form-control" name="city" id="City" required>
-                        <option value="default">Choose...</option>
+                <div>
+                    <select [(ngModel)]="registerMerchantData['locality']" [ngModelOptions]="{standalone: true}"class="form-control" name="locality" id="locality" required>
+                        <option selected="selected" value="one">Select</option>
+                        <option value="two">Vadgaon Sheri</option>
+                        <option value="three">Anand park</option>
+                        <option value="four">Sainath Nagar</option>
+                        <option value="five">Kharadi</option>
                     </select>
                 </div>
             </div>
-            <!-- </div> -->
-            <!-- <div class="row"> -->
-            <div class="form-group ml-4 mt-3 col-xs-3">
-                <div class="input-group mb-0">
-                    <div class="input-group-prepend">
-                        <label class="input-group-text" for="locality">Locality: </label>
-                    </div>
-                    <div>
-                        <select class="form-control" name="locality" id="locality" required>
-                            <option value="default">Choose...</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
         </div>
-        <!-- Checkbox -->
-        <div class="custom-control custom-checkbox ml-2 mb-2">
-            <input type="checkbox" class="custom-control-input" id="customCheck1">
-            <label class="custom-control-label" for="customCheck1">Accept our <a href="#">Terms and
-                    Conditions</a></label>
-        </div>
-        <!-- Submit Button -->
-        <button id="agree_button" class="btn btn-primary ml-2 mt-3" type="submit" disabled>Register</button>
-    </form>
-</body>
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-    crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-    crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-    crossorigin="anonymous"></script>
-
-</html>
-
-
-
-
-<!-- script -->
-<script type="text/JavaScript">
-// Username validation
-$("#username").change(function () {
-    var username = $(this).val();
-
-    $.ajax({
-        type: 'GET',
-        url: 'usernamevalidator',
-        data: {
-            "username": username
-        },
-        dataType: 'json',
-        success: function (result) {
-            if (result.is_taken) {
-                // $("#username_validation").html(result.error_message);
-                document.getElementById("username").style.borderColor = "red";
-            }
-            else {
-                // $("#username_validation").html(result.success_message);
-                document.getElementById("username").style.borderColor = "green";
-            }
-        },
-        error: function (result) {
-            $("#username_validation").html(result.error_message);
-        }
-    });
-});
-
-// Password validation
-$("#password, #confirm_password").on('keyup', function () {
-    if ($("#password").val() != $("#confirm_password").val()) {
-        // $("#password_validator").html("Passwords do not match!");
-        $("#password_validator").html("Passwords do not match!").css("color", "red");
-        document.getElementById("password").style.borderColor = "red";
-        document.getElementById("confirm_password").style.borderColor = "red";
-    }
-    else {
-        $("#password_validator").html("");
-        document.getElementById("password").style.borderColor = "green";
-        document.getElementById("confirm_password").style.borderColor = "green";
-    }
-});
-
-// Checkbox select
-$("#customCheck1").click(function () {
-    $("#agree_button").attr("disabled", !this.checked);
-});
-</script>
+    </div>
+    <!-- Checkbox -->
+    <div class="custom-control custom-checkbox ml-2 mb-2">
+        <input type="checkbox" class="custom-control-input" id="customCheck1">
+        <label class="custom-control-label" for="customCheck1">Accept our <a href="#">Terms and
+                Conditions</a></label>
+    </div>
+    <!-- Submit Button -->
+    <button id="agree_button" class="btn btn-primary ml-2 mt-3" type="submit" (click)='registerMerchant()'>Register</button>
+</form>
